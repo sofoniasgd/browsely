@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, send_file, render_template
-import os
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.automap import automap_base
+from sqlalchemy import Column, Integer, String
+import os
 
 # Create the Flask app
 app = Flask(__name__)
