@@ -38,7 +38,7 @@ def scan_directory_and_add_to_db(root_dir, session):
                     name=filename,
                     location=location,
                     file_path=file_path,
-                    root_dir_path=root_dir
+                    root_directory=root_dir
                 )
                 print("adding file: {} || {}\n{}".format(file_record.name, file_record.location, file_record.file_path))
                 session.add(file_record)

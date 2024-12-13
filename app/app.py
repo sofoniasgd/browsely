@@ -34,30 +34,38 @@ def dashboard():
 @app.route('/about')
 def about():
     return render_template('about.html')
+# pdf viewer endpoint
+@app.route('/pdf_viewer')
+def pdf_viewer():
+    return render_template('pdf_viewer.html')
 
 # Search endpoint that returns results of a MySQL query
 @app.route('/search/<tin_number>')
 def search(tin_number):
-    # Query the database and return the results
-    result = Files.query.filter_by(name=tin_number)
-    
+    # Query the database and return the results matching the tin number
+    search_term = f'%{tin_number}%'
+    print(search_term)
+    result = Files.query.filter(Files.name.like(search_term)).all()
     if not result:
         return jsonify({'error': 'Data not found'})
     # Convert the results to a list of dictionaries
-    result = []
+    result_json = []
     for record in result:
-        result.append({
+        result_json.append({
             'id': record.id,
             'name': record.name,
             'location': record.location,
             'file_path': record.file_path,
             'root_directory': record.root_directory
         })
-    return jsonify(result)
+    return jsonify(result_json)
 
 # Download endpoint that returns a file
-@app.route('/download/<file_path>')
-def download(file_path):
+@app.route('/download/<file_name>')
+def download(file_name):
+    # Get the file path from the database
+    file_record = Files.query.filter_by(name=file_name).first()
+    file_path = file_record.file_path
     return send_file(file_path)
 
 

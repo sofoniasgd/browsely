@@ -1,7 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <p>Dashboard</p>
+<div class="container">
+    <!-- Search Row -->
+    <div class="row my-4">
+        <div class="col-md-4">
+            <form class="form-inline" onsubmit="return false;">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input" placeholder="Enter TIN number here/TIN እዚህ ያስገቡ" aria-label="Search">
+                    <div class="input-group-append">
+                        <button type="button" action="" class="btn btn-primary" id="search_button">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Results Column -->
+        <div class="col-md-8">
+            <div class="card bg-light bg-gradient mb-3">
+                <div class="card-header">Search Results</div>
+                <div class="card-body" id="result-container">
+                    <!-- Results go here -->
+                </div>
+            </div>
+        </div>
+        <!-- Tutorial Column -->
+        <div class="col-md-4">
+            <div class="card bg-light bg-gradient mb-3">
+                <div class="card-header">How to Use the Search Function</div>
+                <div class="card-body">
+                    <!-- Tutorial content goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

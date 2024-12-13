@@ -7,8 +7,8 @@ USE browsely_db;
 -- Create the table
 CREATE TABLE IF NOT EXISTS files (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
-    location VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    location VARCHAR(50) NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     root_directory VARCHAR(255) NOT NULL,
     UNIQUE (id)
